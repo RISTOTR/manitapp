@@ -1,0 +1,13 @@
+<h1>
+  {{title}}
+</h1>
+
+<div *ngIf="!sessionService.user">
+  <app-login-form></app-login-form>
+</div>
+
+<div *ngIf="sessionService.user">
+  <h2>BIENVENIDO SR PATATA</h2>
+  <button (click)="sessionService.logout().subscribe()"> Logout </button>
+</div>
+
