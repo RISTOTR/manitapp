@@ -6,6 +6,7 @@ const express      = require('express');
 const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
 const mongoose     = require('mongoose');
+
 const logger       = require('morgan');
 const path         = require('path');
 const session = require("express-session");
@@ -86,10 +87,8 @@ app.use('/', index);
 const authRouter = require("./routes/auth");
 app.use("/api/auth", authRouter);
 
-app.use(function(req, res) {
-  res.sendfile(__dirname + '/public/index.html');
-});
-
+//const user = require('./routes/user');
+app.use('/api/user', require('./routes/user')); 
 
 
 module.exports = app;
