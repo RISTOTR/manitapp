@@ -14,6 +14,7 @@ const logInPromise = (user, req) => new Promise((resolve,reject) => {
 
 /* GET home page */
 router.post('/signup', (req, res, next) => {
+    console.log(req.body)
     const {username, password} = req.body;
   
     if (!username || !password) {
@@ -30,10 +31,14 @@ router.post('/signup', (req, res, next) => {
 
         const theUser = new User({
           username,
-          password: hashPass
+          password: hashPass,
+          location: [40.4378698,-3.8196207]
         });
     
-        return theUser.save().then( user => logInPromise(user,req));
+        console.log(theUser)
+        return theUser.save().then( user => {
+            return logInPromise(user,req)
+        });
     })
     .then(user => res.status(200).json(user))
     .catch(e => res.status(500).json({message:e.message}));

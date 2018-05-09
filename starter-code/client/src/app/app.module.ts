@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SessionService } from './services/session.service';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
-  ],
+    LoginFormComponent,
+    UserComponent
+],
   imports: [
     BrowserModule,
     FormsModule,
