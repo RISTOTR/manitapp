@@ -32,7 +32,10 @@ router.post('/signup', (req, res, next) => {
         const theUser = new User({
           username,
           password: hashPass,
-          location: [40.4378698,-3.8196207]
+          location: {
+              type: 'Point',
+              coordinates:[40.4378698,-3.8196207]
+          }
         });
     
         console.log(theUser)
