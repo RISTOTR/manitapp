@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const User =require('../models/user');
+const User =require('../models/User');
 
 const offerSchema = new Schema ({
    // offerDate: Date,
     offerTitle: String,
     offerDescription: String,
-    price: Number,
+    //price: Number,
     prof: { type: Schema.Types.ObjectId, ref: 'User' },
     //location: { type: { type: String }, coordinates: [Number] }
     //postalCode: Number
@@ -22,4 +22,3 @@ const offerSchema = new Schema ({
 
 const Offer = mongoose.model('Offer', offerSchema);
 module.exports = Offer;
-

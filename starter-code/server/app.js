@@ -87,8 +87,20 @@ app.use('/', index);
 const authRouter = require("./routes/auth");
 app.use("/api/auth", authRouter);
 
-//const user = require('./routes/user');
-app.use('/api/user', require('./routes/user')); 
+const user = require('./routes/user');
+app.use('/api/user', user); 
+
+const offerRouter = require("./routes/offer");
+app.use('/api/offer', offerRouter);
+
+const hireRouter = require("./routes/hire");
+app.use('/api/hire', hireRouter);
+
+// app.use(function(req, res) {
+//   res.sendfile(__dirname + '/public/index.html');
+// });
+
+
 
 
 module.exports = app;

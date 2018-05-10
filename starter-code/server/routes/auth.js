@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const User = require('../models/user');
+const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 
@@ -32,6 +32,13 @@ router.post('/signup', (req, res, next) => {
         const theUser = new User({
           username,
           password: hashPass,
+          name,
+          lastname,
+          telephone,
+          isProf,
+          professionType,
+          userTags,
+          imgProfile,
           location: {
               type: 'Point',
               coordinates:[40.4378698,-3.8196207]

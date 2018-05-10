@@ -7,9 +7,9 @@ mongoose.connect(process.env.DBURL).then(() => {
   useMongoClient: true;
 });
 
-const User = require("../models/user");
-const Hire = require("../models/hire");
-const Offer = require("../models/offer");
+const User = require("../models/User");
+const Hire = require("../models/Hire");
+const Offer = require("../models/Offer");
 
 const users = [
   {
@@ -36,6 +36,18 @@ const offers = [
     offerDescription: "Professional plumber in Madrid",
     price: 45,
    // prof: { type: Schema.Types.ObjectId, ref: "User" }
+  },
+  {
+    offerTitle: "Electrician",
+    offerDescription: "Professional plumber in Madrid",
+    price: 45,
+   // prof: { type: Schema.Types.ObjectId, ref: "User" }
+  },
+  {
+    offerTitle: "Plumber",
+    offerDescription: "Sexy plumber in Madrid",
+    price: 45,
+   // prof: { type: Schema.Types.ObjectId, ref: "User" }
   }
 ];
 
@@ -46,6 +58,20 @@ const hires = [
     address: "Feliciana",
     //date: Date,
     observations: "cheap"
+  },
+  {
+    //offer: { type: Schema.Types.ObjectId, ref: "Offer" },
+    //user: { type: Schema.Types.ObjectId, ref: "User" },
+    address: "Santa",
+    //date: Date,
+    observations: "Expensive"
+  },
+  {
+    //offer: { type: Schema.Types.ObjectId, ref: "Offer" },
+    //user: { type: Schema.Types.ObjectId, ref: "User" },
+    address: "Matadero",
+    //date: Date,
+    observations: "dirty"
   }
 ];
 

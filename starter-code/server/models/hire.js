@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const User = require("../models/user");
-const Offer = require("../models/offer");
+const User = require("../models/User");
+const Offer = require("../models/Offer");
 
 const hireSchema = new Schema(
   {
@@ -9,7 +9,13 @@ const hireSchema = new Schema(
     user: { type: Schema.Types.ObjectId, ref: "User" },
     address: String,
     date: Date,
-    observations: String
+    observations: String,
+    price: Number,
+    status: {
+        type: String,
+        enum: ['Pending', 'Accepted', 'Rejected'],
+        default: "Pending"
+      }
   },
   {
     timestamps: {
