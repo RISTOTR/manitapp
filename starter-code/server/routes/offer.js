@@ -62,8 +62,9 @@ router.get("/:id", (req, res, next) => {
   router.get("/edit/:id", loggedin, myOffer, (req, res, next) => {
       
     Offer.findById(req.params.id)
-      .then(user => {
-        return res.status(200).json(user);
+      .then(offer => {
+          console.log('entra')
+        return res.status(200).json(offer);
       })
       .catch(err => {
         return res.status(500).json(err);

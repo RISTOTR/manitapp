@@ -60,7 +60,7 @@ router.post("/status/:id", loggedin, (req, res, next) => {
     const { status } = req.body;
   
     var opts = { runValidators: true };
-    Hire.findByIdAndUpdate(req.params.id, { status },opts)
+    Hire.findByIdAndUpdate(req.params.id, { status },opts, {new: true})
       .then(hire => res.status(200).json(hire))
       .catch(err => res.status(500).json(err));
   });

@@ -1,13 +1,13 @@
 const Offer = require('../models/Offer');
+
 const myOffers = (req, res, next) => {
+    console.log(req.params.id)
+    console.log(req.user.id)
     const offerId = req.params.id;
-    Offer.findOne({_id: offerId})
+    Offer.findById(req.params.id)
 
         .then(t => {
-            console.log(req.user);
-            console.log(req.user._id);
-            console.log(req.prof._id)
-            if (req.user&&(JSON.stringify(t.user_id) === JSON.stringify(req.user._id))) {
+            if (req.user.id == t.prof) {
             next();
         } else {
             res.redirect('/');
