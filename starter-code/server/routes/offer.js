@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require("../models/User");
 const Offer = require("../models/Offer");
 const loggedin = require("../utils/isAuthenticated");
-const onlyMe = require("../utils/onlyMe");
+const myOffer = require("../utils/myOffers");
 const fields = Object.keys(_.omit(Offer.schema.paths, ["__v", "_id"]));
 
 //Retrive ALL
@@ -59,7 +59,7 @@ router.get("/:id", (req, res, next) => {
 
   //Editar perfil 
 
-  router.get("/edit/:id", loggedin, (req, res, next) => {
+  router.get("/edit/:id", loggedin, myOffer, (req, res, next) => {
       
     Offer.findById(req.params.id)
       .then(user => {
