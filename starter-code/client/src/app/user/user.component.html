@@ -1,3 +1,20 @@
 <p>
   user works!
 </p>
+<p>user component works</p>
+
+
+<div class="col-md-7">
+  <h1>{{sessionService.user.username}}</h1>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<button (click)="sessionService.logout().subscribe()" class="btn">Logout</button>

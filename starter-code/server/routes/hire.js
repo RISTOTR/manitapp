@@ -5,6 +5,7 @@ const User = require("../models/User");
 const Offer = require("../models/Offer");
 const Hire = require("../models/Hire");
 const loggedin = require("../utils/isAuthenticated");
+const myHire = require("../utils/myHires");
 const fields = Object.keys(_.omit(Hire.schema.paths, ["__v", "_id"]));
 
 
@@ -36,13 +37,28 @@ router.post("/new", loggedin, (req, res, next) => {
       .catch(e => next(e));
   });
 
+  //get edit 
+
+  router.get("/edit/:id", loggedin, myHire, (req, res, next) => {
+      
+    Hire.findById(req.params.id)
+      .then(hire => {
+          console.log('entra')
+        return res.status(200).json(hire);
+      })
+      .catch(err => {
+        return res.status(500).json(err);
+      });
+  });
+
 
 //edit
 router.put("/edit/:id", loggedin, (req, res, next) => {
-    console.log(req.body.user)
-    if (req.user._id.toString() !== req.body.user){
+     console.log(req.user.id)
+     console.log(req.user._id)
+     if (req.user._id.toString() !== req.user.id){
         return res.status(500).json('Bad privileges');
-    }
+     }
     const updates = _.pick(req.body, fields);
     console.log(updates)
     Hire.findByIdAndUpdate(req.params.id, updates, {new: true})

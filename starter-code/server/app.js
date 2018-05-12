@@ -6,7 +6,7 @@ const express      = require('express');
 const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
 const mongoose     = require('mongoose');
-
+const multer = require('multer');
 const logger       = require('morgan');
 const path         = require('path');
 const session = require("express-session");
