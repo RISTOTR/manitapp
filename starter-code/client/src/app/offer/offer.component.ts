@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../services/session.service';
 
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-offer',
+  templateUrl: './offer.component.html',
+  styleUrls: ['./offer.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class OfferComponent implements OnInit {
   user:any;
   title: string = 'Your ubication';
   lat: number = 40.433489;
@@ -15,8 +16,6 @@ export class HomeComponent implements OnInit {
   constructor(public sessionService: SessionService) { }
 
   ngOnInit() {
-    
   }
-
 
 }

@@ -1,0 +1,13 @@
+<p>
+  offer works!
+</p>
+
+<h1>{{sessionService.user.username}}</h1>
+<button (click)="sessionService.logout().subscribe()" class="btn btn-primary">Logout</button>
+
+
+
+
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>

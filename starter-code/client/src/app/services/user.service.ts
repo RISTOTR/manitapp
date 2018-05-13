@@ -31,7 +31,7 @@ deleteUser() {
   //Perfil privado del usuario
   
   profileUser() {
-    console.log("Hola")
+    
     return this.http
       .get(`${environment.BASEURL}/api/user/profile`, this.options)
       .map(res => {

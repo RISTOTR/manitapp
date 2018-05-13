@@ -13,6 +13,8 @@ import { UserComponent } from './user/user.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AgmCoreModule } from '@agm/core';
+import { OfferComponent } from './offer/offer.component';
+import { HireComponent } from './hire/hire.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { AgmCoreModule } from '@agm/core';
     UserComponent,
     SignupComponent,
     HomeComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    OfferComponent,
+    HireComponent
 ],
   imports: [
     BrowserModule,
