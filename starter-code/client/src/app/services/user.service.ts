@@ -8,6 +8,7 @@ import { User } from "../interfaces/user-interface";
 
 @Injectable()
 export class UserService {
+  BASEURL: string = "http://localhost:3000";
     user: User
 options: any = {withCredentials: true}
 
@@ -48,4 +49,4 @@ deleteUser() {
 
 
 
-}
+

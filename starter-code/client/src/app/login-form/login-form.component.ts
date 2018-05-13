@@ -22,13 +22,13 @@ export class LoginFormComponent implements OnInit {
     this.sessionService.login(this.username, this.password).subscribe(() => this.router.navigate(["/user"]));
   }
 
-  signup() {
-    const user = {
-      username: this.username,
-      password: this.password,
+//   signup() {
+//     const user = {
+//       username: this.username,
+//       password: this.password,
    
-    };
-    console.log(user);
-    this.sessionService.signup(user).subscribe(() => this.router.navigate(["/user"]));
-  }
+//     };
+//     console.log(user);
+//     this.sessionService.signup(user).subscribe(() => this.router.navigate(["/user"]));
+//   }
 }

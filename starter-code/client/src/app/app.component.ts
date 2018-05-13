@@ -7,6 +7,7 @@ import { SessionService } from './services/session.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
   // title = 'app works!';
   // constructor(public sessionService:SessionService){
   //   this.sessionService.userEvent.subscribe( user => {

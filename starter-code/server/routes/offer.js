@@ -35,17 +35,28 @@ router.get("/:id", (req, res, next) => {
   // Create
   router.post("/new", loggedin, (req, res, next) => {
     const prof = req.user.id;
-    const {offerTitle, offerDescription}=req.body;
+    const {offerDate, offerTitle, offerDescription, price, location, postalCode}=req.body;
     // if (!user || !buddy || !from || !to) {
     //   return res.status(500).json({ message: "" });
     // }
    
    
     const newOffer = new Offer({
+      offerDate,
       offerTitle,
       offerDescription,
-      prof
-      
+      price,
+      prof,
+      location: {
+        "$near": {
+            "$geometry": {
+          type: 'Point',
+          "coordinates":req.body.currentLocation.coordinates
+      },
+      "$maxDistance": req.params.km
+    }
+    },
+      postalCode
     });
   
     newOffer

@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require("../models/User");
 const loggedin = require("../utils/isAuthenticated");
 
+
 const fields = Object.keys(_.omit(User.schema.paths, ["__v", "_id"]));
 
 //Retrive ALL

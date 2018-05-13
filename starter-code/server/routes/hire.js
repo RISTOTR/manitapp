@@ -39,7 +39,7 @@ router.post("/new", loggedin, (req, res, next) => {
 
   //get edit 
 
-  router.get("/edit/:id", loggedin, myHire, (req, res, next) => {
+  router.get("/edit/:id", [loggedin, myHire], (req, res, next) => {
       
     Hire.findById(req.params.id)
       .then(hire => {

@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const upload = require('../configs/cloudinary');
 
 
 const logInPromise = (user, req) => new Promise((resolve,reject) => {
@@ -13,18 +14,23 @@ const logInPromise = (user, req) => new Promise((resolve,reject) => {
 
 
 /* GET home page */
-router.post('/signup', (req, res, next) => {
-    console.log(req.body)
-    const {username, password, name, lastname, telephone, email, isProf, professionType, userTags, imgProfile, location} = req.body;
-  
+router.post('/signup',upload.single('file'),(req, res, next) => {
+    
+    const {username, password, name, lastname, telephone, email, isProf, professionType, userTag, location} = req.body;
+    
+    const imgProfile = req.file.url;
+    
+
     if (!username || !password) {
-      res.status(400).json({ message: 'Provide username and password' });
-      return;
+        res.status(400).json({ message: 'Provide username and password' });
+        return;
     }
-  
+    
     User.findOne({ username })
     .then( user => {
+       
         if(user) throw new Error('The username already exists');
+        
         
         const salt = bcrypt.genSaltSync(10);
         const hashPass = bcrypt.hashSync(password, salt);
@@ -37,13 +43,18 @@ router.post('/signup', (req, res, next) => {
           telephone,
           email,
           isProf,
-          professionType,
-          userTags,
+          //professionType,
+          //userTags,
           imgProfile,
           location: {
+            "$near": {
+                "$geometry": {
               type: 'Point',
-              coordinates:[40.4378698,-3.8196207]
-          }
+              "coordinates":req.body.currentLocation.coordinates
+          },
+          "$maxDistance": req.params.km
+        }
+        }
         });
     
         

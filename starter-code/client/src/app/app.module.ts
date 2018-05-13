@@ -12,6 +12,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { UserComponent } from './user/user.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB90SbQDcUbB3g32fUUKuEDefCYn62S_zE'
+    })
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
