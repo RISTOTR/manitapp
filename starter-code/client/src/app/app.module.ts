@@ -15,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { AgmCoreModule } from '@agm/core';
 import { OfferComponent } from './offer/offer.component';
 import { HireComponent } from './hire/hire.component';
+import { UserService } from './services/user.service';
+
+
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { HireComponent } from './hire/hire.component';
     HomeComponent,
     FileSelectDirective,
     OfferComponent,
-    HireComponent
+    HireComponent,
+    UserComponent
 ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { HireComponent } from './hire/hire.component';
       apiKey: 'AIzaSyB90SbQDcUbB3g32fUUKuEDefCYn62S_zE'
     })
   ],
-  providers: [SessionService],
+  providers: [SessionService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

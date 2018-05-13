@@ -47,12 +47,12 @@ router.post('/signup',upload.single('file'),(req, res, next) => {
           //userTags,
           imgProfile,
           location: {
-            "$near": {
-                "$geometry": {
+        $near: {
+                $geometry: {
               type: 'Point',
               "coordinates":req.body.currentLocation.coordinates
           },
-          "$maxDistance": req.params.km
+          $maxDistance: req.params.km
         }
         }
         });

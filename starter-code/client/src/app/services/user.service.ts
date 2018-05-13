@@ -4,15 +4,21 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
-import { User } from "../interfaces/user-interface";
+//import { User } from "../interfaces/user-interface";
 
 @Injectable()
 export class UserService {
-  BASEURL: string = "http://localhost:3000";
-    user: User
+ 
+user: any;
 options: any = {withCredentials: true}
 
 constructor(private http: Http) { }
+
+// getUser() {
+//   return this.http
+//       .get(`${environment.BASEURL}/api/user/profile`, this.options)
+//       .map(res => res.json());
+// }
 
 editUser() {
     return this.http

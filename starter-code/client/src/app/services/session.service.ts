@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SessionService {
-  BASEURL: string = "http://localhost:3000";
+ 
   user:any;
   userEvent: EventEmitter<any> = new EventEmitter();
   options: any = { withCredentials:true };

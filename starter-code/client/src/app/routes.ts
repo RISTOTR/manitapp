@@ -7,6 +7,7 @@ import { OfferComponent } from "./offer/offer.component";
 import { HireComponent } from "./hire/hire.component";
 
 
+
 export const routes: Routes = [
     
     { path: '', redirectTo:'home', pathMatch:'full'},
@@ -15,7 +16,8 @@ export const routes: Routes = [
     {path: 'signup', component: SignupComponent},
     { path: 'user', component: UserComponent},
     {path: 'offer', component: OfferComponent},
-    {path: 'hire', component: HireComponent}
+    {path: 'hire', component: HireComponent},
+    
     
  
 //   { path: 'threads/new', component: NewThreadComponent},

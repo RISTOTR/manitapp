@@ -8,11 +8,17 @@ const loggedin = require("../utils/isAuthenticated");
 const fields = Object.keys(_.omit(User.schema.paths, ["__v", "_id"]));
 
 //Retrive ALL
-router.get("/", (req, res, next) => {
-  User.find()
-    .then(user => res.json(user))
-    .catch(e => next(e));
-});
+// router.get("/", (req, res, next) => {
+//   User.find()
+//     .then(user => res.json(user))
+//     .catch(e => next(e));
+// });
+
+// router.get("/:id", (req, res, next) => {
+//   User.findById(req.params.id)
+//     .then(user => res.json(user))
+//     .catch(e => next(e));
+// });
 
 //Show profile of User
 router.get("/profile", loggedin, (req, res, next) => {
@@ -33,12 +39,7 @@ router.get("/profile", loggedin, (req, res, next) => {
 //     .catch(e => next(e));
 // });
 
-// // Retrive DETAIL
-// router.get("/:id", (req, res, next) => {
-//   User.findById(req.params.id)
-//     .then(user => res.json(user))
-//     .catch(e => next(e));
-// });
+
 
 // Update
 router.put("/edit", loggedin, (req, res, next) => {

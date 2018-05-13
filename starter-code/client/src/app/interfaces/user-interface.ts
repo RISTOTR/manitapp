@@ -1,12 +1,9 @@
 export interface User {
+  username: String,
     name:String,
-    surname: String,
-    adress: String,
-    city: String,
-    country: String,
-    pc: String,
+    lastname: String,
     email:String,
     password: String,
-    pic: String,
+    imgProfile: String,
     
   }
