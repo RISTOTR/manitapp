@@ -16,6 +16,8 @@ import { AgmCoreModule } from '@agm/core';
 import { OfferComponent } from './offer/offer.component';
 import { HireComponent } from './hire/hire.component';
 import { UserService } from './services/user.service';
+import { NewOfferComponent } from './New-Offer/New-Offer.component';
+import { OfferService } from './services/offer.service';
 
 
 
@@ -30,7 +32,8 @@ import { UserService } from './services/user.service';
     FileSelectDirective,
     OfferComponent,
     HireComponent,
-    UserComponent
+    UserComponent,
+    NewOfferComponent
 ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { UserService } from './services/user.service';
       apiKey: 'AIzaSyB90SbQDcUbB3g32fUUKuEDefCYn62S_zE'
     })
   ],
-  providers: [SessionService,UserService],
+  providers: [SessionService,UserService,OfferService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

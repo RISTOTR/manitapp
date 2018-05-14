@@ -3,13 +3,14 @@ const Schema = mongoose.Schema;
 const User =require('../models/User');
 
 const offerSchema = new Schema ({
-   offerDate: Date,
     offerTitle: String,
     offerDescription: String,
     price: Number,
     prof: { type: Schema.Types.ObjectId, ref: 'User' },
-    location: { type: { type: String }, coordinates: [Number] },
-    postalCode: Number
+    address: String,
+    city: String,
+    postalcode: Number
+    //location: { type: { type: String }, coordinates: [Number] }
 }, {
     timestamps: {
       createdAt: 'created_at',

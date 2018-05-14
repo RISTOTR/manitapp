@@ -8,8 +8,8 @@ const userSchema = new Schema({
   lastname: String,
   telephone: Number,
   isProf: {type:Boolean, default:false},
-  professionType: {type: String, enum:["Electrician", "Plumber", "Locksmith"]},
-  userTags: [String],
+  professionType: {type: String, enum:["Electrician", "Plumber", "Locksmith", "Persianero"]},
+  //userTags: [String],
   imgProfile: {
     type: String,
     // default:

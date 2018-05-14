@@ -1,9 +1,12 @@
 export interface User {
-  username: String,
-    name:String,
-    lastname: String,
-    email:String,
-    password: String,
-    imgProfile: String,
-    
-  }
+  username: String;
+  password: String;
+  name: String;
+  lastname: String;
+  telephone: Number;
+  email: String;
+  imgProfile: String;
+  isProf: boolean;
+  professionType: String;
+  _id:String;
+}

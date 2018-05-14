@@ -41,9 +41,10 @@
       </div>
 
       <input type="file" name="file" ng2FileSelect [uploader]="uploader"/>
-    <!-- <button (click)="isProf()" type="button" class="btn btn-outline-info btn-lg btn-block">Are you a professional offering services?</button>
+
+      <button (click)="profTrue()" type="button" class="btn btn-outline-info btn-lg btn-block">Click here if you a a professional!</button>
    
-   
+      <div *ngIf="formSignUp.isProf">
     <div class="form-group">
         <label> Your profession </label>
         <select class="form-control" [(ngModel)]="formSignUp.professionType" name="Profession type"> 
@@ -52,7 +53,8 @@
             <option value="Locksmith" >Locksmith</option>
             <option value="Persianero" >Persianero</option>
         </select>
-    </div> -->
+    </div> 
+  </div>
 
    
 <button (click)="signup()" type="button" class="btn btn-outline-info btn-lg btn-block">Submit</button>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../services/session.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -14,9 +16,11 @@ export class OfferComponent implements OnInit {
   lng: number = -3.698555;
   zoom: number = 15;
 
-  constructor(public sessionService: SessionService) { }
+  constructor(public router: Router, public sessionService: SessionService) { }
 
   ngOnInit() {
+
+    
   
   }
 

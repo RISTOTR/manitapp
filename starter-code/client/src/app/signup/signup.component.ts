@@ -24,11 +24,11 @@ export class SignupComponent implements OnInit {
     telephone: "",
   
     email:"",
-    //professionType: "",
-    //userTags: [""],
     isProf: false, 
-    imgProfile: "",
-    location: "",
+    professionType: "",
+    //userTags: [""],
+    // imgProfile: "",
+    // location: "",
     
   }
 
@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
   signup() {
     // this.sessionService
       // .signup(this.formSignUp)
-    console.log(this.formSignUp)
+    
       this.uploader.onBuildItemForm = (item, form) => {
         form.append('username', this.formSignUp.username);
         form.append('password', this.formSignUp.password);
@@ -48,17 +48,17 @@ export class SignupComponent implements OnInit {
         form.append('lastname', this.formSignUp.lastname);
         form.append('telephone', this.formSignUp.telephone);
         form.append('email', this.formSignUp.email);
-        
-
-
-      };
-  
-      
-      
-
-        this.uploader.uploadAll()
+        form.append('isProf', this.formSignUp.isProf);
+        form.append('professionType', this.formSignUp.professionType)
+         };
+       this.uploader.uploadAll()
         this.router.navigate(["/home"])
+     }
+
+     profTrue(){
+       
+      this.formSignUp.isProf ? this.formSignUp.isProf = false : this.formSignUp.isProf = true;
+    }
      
-  }
 
 }

@@ -3,6 +3,7 @@
 </p>
 
 <h1>{{sessionService.user.username}}</h1>
+<a [routerLink]="['/user']" class="btn btn-primary">Edit your profile</a>
 <button (click)="sessionService.logout().subscribe()" class="btn btn-primary">Logout</button>
 
 

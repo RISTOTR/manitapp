@@ -14,11 +14,11 @@ options: any = {withCredentials: true}
 
 constructor(private http: Http) { }
 
-// getUser() {
-//   return this.http
-//       .get(`${environment.BASEURL}/api/user/profile`, this.options)
-//       .map(res => res.json());
-// }
+ getUser() {
+  return this.http
+     .get(`${environment.BASEURL}/api/user/profile`, this.options)
+      .map(res => res.json());
+ }
 
 editUser() {
     return this.http

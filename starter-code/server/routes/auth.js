@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const upload = require('../configs/cloudinary');
 
 
+
 const logInPromise = (user, req) => new Promise((resolve,reject) => {
     req.login(user, (err) => {
         if (err) return reject('Something went wrong');
@@ -43,17 +44,13 @@ router.post('/signup',upload.single('file'),(req, res, next) => {
           telephone,
           email,
           isProf,
-          //professionType,
+          professionType,
           //userTags,
           imgProfile,
           location: {
-        $near: {
-                $geometry: {
-              type: 'Point',
-              "coordinates":req.body.currentLocation.coordinates
-          },
-          $maxDistance: req.params.km
-        }
+        
+type: 'Point',
+coordinates:[40.4378698,-3.8196207]
         }
         });
     
