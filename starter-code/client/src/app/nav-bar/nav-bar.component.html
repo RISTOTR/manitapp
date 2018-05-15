@@ -1,0 +1,19 @@
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a [routerLink]="['/home/']">
+    <i class="fas fa-paw"></i> ManitApp
+  </a>
+  <div *ngIf="sessionService.user">
+    {{user.username | uppercase}}
+    <a class="navbar-brand" [routerLink]="['/user/']">
+      <i class="fas fa-user"></i>Edit profile</a>
+    <a class="navbar-brand" [routerLink]="['/offer/']">
+      <i class="fas fa-heart"></i>Find workers</a>
+    <a class="navbar-brand" (click)="logout()">
+      <i class="far fa-sign-out"></i>Log out</a>
+  </div>
+  <div *ngIf="!sessionService.user">
+    <a class="navbar-brand" [routerLink]="['/signup/']">Registrarse</a>
+    <a class="navbar-brand" [routerLink]="['/login/']">Acceder</a>
+  </div>
+
+</nav>

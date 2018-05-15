@@ -18,8 +18,8 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    console.log(this.username, this.password);
-    this.sessionService.login(this.username, this.password).subscribe(() => this.router.navigate(["/user"]));
+    
+    this.sessionService.login(this.username, this.password).subscribe(() => this.router.navigate(["/home"]));
   }
 
 //   signup() {

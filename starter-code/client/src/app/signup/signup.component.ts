@@ -38,6 +38,7 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
+    
     // this.sessionService
       // .signup(this.formSignUp)
     

@@ -38,7 +38,6 @@ router.get("/:id", (req, res, next) => {
 
 // Create
 router.post("/new", loggedin, (req, res, next) => {
-  console.log(req.body);
   const prof = req.user.id;
   const {
     offerTitle,
@@ -47,33 +46,37 @@ router.post("/new", loggedin, (req, res, next) => {
     address,
     city,
     postalcode
-    //location,
-    } = req.body;
+  } = req.body;
 
-    
+  const geo = address + " " + city + " " + postalcode;
+  googleMapsClient
+    .geocode({ address: geo })
+    .asPromise()
+    .then(data => {
+      lat = data.json.results[0].geometry.viewport.northeast.lat;
+      lng = data.json.results[0].geometry.viewport.northeast.lng;
+      var location = { type: "Point", coordinates: [lat, lng] };
 
-  const newOffer = new Offer({
-    offerTitle,
-    offerDescription,
-    price,
-    prof,
-    address,
-    city,
-    postalcode
-   // location,
-     
-  });
-      
-  newOffer
-    .save()
-    .then(user => res.status(200).json(user))
-    .catch(err => {
-      console.log(err)
-      res.status(500).json(err)
+      const newOffer = new Offer({
+        offerTitle,
+        offerDescription,
+        price,
+        prof,
+        address,
+        city,
+        postalcode,
+        location
+      });
+
+       newOffer
+       .save()
+       .then(user => res.status(200).json(user))
+       .catch(err => {
+         console.log(err);
+         res.status(500).json(err);
+       });
     });
-  
 });
-
 
 //Editar perfil
 
@@ -124,32 +127,32 @@ router.delete("/delete/:id", loggedin, (req, res, next) => {
     });
 });
 
-router.get('/near', function(req, res) {
+router.get("/near", function(req, res) {
   // Process the data received in req.body
-  res.redirect('3000');
+  res.redirect("3000");
 });
 
 // Retrieve Near you passing KM as a param
 router.post("/near/:km", (req, res, next) => {
   console.log("Retrieve near you");
   console.log(req.body.currentLocation.coordinates);
-  if(req.params.km == undefined || req.params.km > 3000 ){
+  if (req.params.km == undefined || req.params.km > 3000) {
     req.params.km = 3000;
   }
-   Offer.find({
-     "location": {
-       "$near": {
-         "$geometry": {
-           "type": "Point",
-           "coordinates":req.body.currentLocation.coordinates
+  Offer.find({
+    location: {
+      $near: {
+        $geometry: {
+          type: "Point",
+          coordinates: req.body.currentLocation.coordinates
         },
-         "$maxDistance": req.params.km
-       }
+        $maxDistance: req.params.km
+      }
     }
-    })
+  })
 
-  .then(objects => res.json(objects))
-  .catch(e => next(e));
+    .then(objects => res.json(objects))
+    .catch(e => next(e));
 });
 
 module.exports = router;

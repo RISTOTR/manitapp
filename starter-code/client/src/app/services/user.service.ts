@@ -4,12 +4,12 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
-//import { User } from "../interfaces/user-interface";
+import { User } from "../interfaces/user-interface";
 
 @Injectable()
 export class UserService {
  
-user: any;
+user: User;
 options: any = {withCredentials: true}
 
 constructor(private http: Http) { }
@@ -41,15 +41,26 @@ deleteUser() {
     return this.http
       .get(`${environment.BASEURL}/api/user/profile`, this.options)
       .map(res => {
-        console.log('jjj')
+       
         return res.json()
       })
        .map(user => {
-         console.log(user)
+        
        this.user = user
         return user
       });   
   }
+
+getOffers() {
+  return this.http
+  .get(`${environment.BASEURL}/api/offer/`, this.options)
+  .map( res => {
+
+    return res.json()
+  })
+  
+}
+
 
 }
 

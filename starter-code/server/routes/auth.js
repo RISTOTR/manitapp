@@ -47,12 +47,12 @@ router.post('/signup',upload.single('file'),(req, res, next) => {
           professionType,
           //userTags,
           imgProfile,
-          location: {
+//           location: {
         
-type: 'Point',
-coordinates:[40.4378698,-3.8196207]
-        }
-        });
+// type: 'Point',
+// coordinates:[40.4378698,-3.8196207]
+//         }
+         });
     
         
         return theUser.save().then( user => {

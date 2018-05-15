@@ -5,6 +5,7 @@ export interface Offer {
   prof: String,
  address: String,
  city: String,
- postalcode: Number
+ postalcode: string,
+ location: number,
 
   }

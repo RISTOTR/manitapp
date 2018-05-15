@@ -15,7 +15,7 @@ const userSchema = new Schema({
     // default:
     //   "http://res.cloudinary.com/deavo73zk/image/upload/v1524561053/anonimo-icon.png"
   },
-  location: { type: { type: String }, coordinates: [Number] }
+  //location: { type: { type: String }, coordinates: [Number] }
   //postalCode: Number
 
 }, {

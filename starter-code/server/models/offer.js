@@ -9,8 +9,8 @@ const offerSchema = new Schema ({
     prof: { type: Schema.Types.ObjectId, ref: 'User' },
     address: String,
     city: String,
-    postalcode: Number
-    //location: { type: { type: String }, coordinates: [Number] }
+    postalcode: String,
+    location: { type: { type: String }, coordinates: [Number] }
 }, {
     timestamps: {
       createdAt: 'created_at',

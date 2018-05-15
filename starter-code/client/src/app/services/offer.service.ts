@@ -24,7 +24,10 @@ constructor(private http: Http) { }
   
   newOffer(offer) {
     return this.http.post(`${environment.BASEURL}/api/offer/new`, offer, this.options)
-      .map(res => res.json());
+      .map(res => {
+        console.log(res)  
+        return res.json()
+      });
   }
 
   //show professional´s offer
