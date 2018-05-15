@@ -30,7 +30,7 @@ router.get("/", (req, res, next) => {
 //   });
 
 //show one
-router.get("/:id", (req, res, next) => {
+router.get("/detail/:id", (req, res, next) => {
   Offer.findById(req.params.id)
     .then(object => res.json(object))
     .catch(e => next(e));
@@ -127,32 +127,38 @@ router.delete("/delete/:id", loggedin, (req, res, next) => {
     });
 });
 
-router.get("/near", function(req, res) {
+/* router.get("/near", function(req, res) {
   // Process the data received in req.body
   res.redirect("3000");
-});
+}); */
 
 // Retrieve Near you passing KM as a param
-router.post("/near/:km", (req, res, next) => {
-  console.log("Retrieve near you");
-  console.log(req.body.currentLocation.coordinates);
-  if (req.params.km == undefined || req.params.km > 3000) {
-    req.params.km = 3000;
-  }
+router.post("/near", (req, res, next) => {
+  console.log('near')
+  console.log(req.body.currentLocation)
+  //req.body.currentLocation
+  /* if (req.body.km == undefined || req.body.km > 3000) {
+    req.body.km = 3000;
+  } */
   Offer.find({
-    location: {
-      $near: {
-        $geometry: {
-          type: "Point",
-          coordinates: req.body.currentLocation.coordinates
-        },
-        $maxDistance: req.params.km
+    location:
+      { $near :
+         {
+           $geometry: req.body.currentLocation,
+           $minDistance: 10,
+           $maxDistance: 1000
+         }
       }
-    }
   })
 
-    .then(objects => res.json(objects))
-    .catch(e => next(e));
+    .then(offers => {
+      console.log(offers)
+      return res.json(offers)
+    })
+    .catch(e => {
+      console.log(e)
+      next(e)
+    });
 });
 
 module.exports = router;

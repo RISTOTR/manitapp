@@ -15,13 +15,21 @@ export class OfferService {
 constructor(private http: Http) { }
 
  
-//  getHire() {
-//     return this.http
-//       .get(`${environment.BASEURL}/api/hire/get-hire`, this.options)
-//       .map(res => res.json());
-//   }
+getList(currentLocation) {
+  return this.http.post(`${environment.BASEURL}/api/offer/near`, {currentLocation}, this.options)
+      .map(res => {
+        console.log(res)  
+        return res.json()
+      });
+  }
 
-  
+   //show professional´s offer
+  showOneOffer(id) {
+    return this.http
+      .get(`${environment.BASEURL}/api/offer/detail/${id}`, this.options)
+      .map(res => res.json());
+  }
+
   newOffer(offer) {
     return this.http.post(`${environment.BASEURL}/api/offer/new`, offer, this.options)
       .map(res => {
@@ -38,9 +46,9 @@ constructor(private http: Http) { }
   }
 
   //Edit hire
-  editOffer() {
+  editOffer(id) {
     return this.http
-      .get(`${environment.BASEURL}/api/offer/edit`)
+      .get(`${environment.BASEURL}/api/offer/edit/${id}`)
       .map(res => res.json());
   }
 
@@ -53,10 +61,14 @@ constructor(private http: Http) { }
 
 
 
-  getList(currentLocation) {
-    return this.http.post(`${environment.BASEURL}/api/offer/near/2000`,{currentLocation})
-      .map((res) => res.json());
-    }
+  getOffers() {
+    return this.http
+    .get(`${environment.BASEURL}/api/offer/`, this.options)
+    .map( res => {
+  
+      return res.json()
+    })
+
 
 
 }

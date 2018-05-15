@@ -51,15 +51,15 @@ deleteUser() {
       });   
   }
 
-getOffers() {
-  return this.http
-  .get(`${environment.BASEURL}/api/offer/`, this.options)
-  .map( res => {
+// getOffers() {
+//   return this.http
+//   .get(`${environment.BASEURL}/api/offer/`, this.options)
+//   .map( res => {
 
-    return res.json()
-  })
+//     return res.json()
+//   })
   
-}
+// }
 
 
 }

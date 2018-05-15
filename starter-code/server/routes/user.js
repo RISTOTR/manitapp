@@ -31,6 +31,16 @@ router.get("/profile", loggedin, (req, res, next) => {
     });
 });
 
+router.get("/:professionType", loggedin, (req, res, next) => {
+  User.find({professionType: req.params.professionType})
+    .then(user => {
+      return res.status(200).json(user);
+    })
+    .catch(err => {
+      return res.status(500).json(err);
+    });
+});
+
 // Create
 // router.post("/", (req, res, next) => {
 //   const ph = _.pick(req.body, fields);
