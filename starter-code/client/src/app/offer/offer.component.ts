@@ -40,9 +40,25 @@ export class OfferComponent implements OnInit {
 
   constructor(public router: Router, public sessionService: SessionService, public offerService: OfferService, public userService: UserService) { }
 
+ 
+
   ngOnInit() {
  this.searchOffer();
+ this.findMe();
     }
+
+    findMe() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          console.log(position);
+        });
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+ 
 
     searchOffer(){
       this.userService.getOffers().subscribe( offers => {

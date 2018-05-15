@@ -6,9 +6,10 @@
 <a [routerLink]="['/user']" class="btn btn-primary">Edit your profile</a>
 <button (click)="sessionService.logout().subscribe()" class="btn btn-primary">Logout</button>
 
-
-
+<div>
+    
 
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <agm-marker *ngIf="lat" [latitude]=lat [longitude]=lng></agm-marker> 
     <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng"></agm-marker>
 </agm-map>
