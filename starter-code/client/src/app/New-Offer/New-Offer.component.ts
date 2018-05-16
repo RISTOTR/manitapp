@@ -46,6 +46,7 @@ export class NewOfferComponent implements OnInit {
     this.offerService.newOffer(form.value).subscribe(data=>{
       console.log('back in the comp')
       console.log(data)
+      this.router.navigate(["/home"])
     })
 
 

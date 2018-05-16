@@ -10,6 +10,8 @@ import { UserService } from "../services/user.service";
 })
 export class HomeComponent implements OnInit {
   user:User;
+  
+  currentUser:User;
   // title: string = 'Your ubication';
   // lat: number = 40.433489;
   // lng: number = -3.698555;
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit {
   constructor(public sessionService: SessionService, public userService: UserService) { }
 
   ngOnInit() {
-    
+    this.sessionService.isLoggedIn().subscribe(u => {
+      this.currentUser = u});
   }
 
 

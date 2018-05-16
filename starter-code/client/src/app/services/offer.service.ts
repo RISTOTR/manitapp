@@ -6,6 +6,7 @@ import { Observable } from "rxjs/Rx";
 import { environment } from "../../environments/environment";
 import { User } from "../Interfaces/user-interface";
 import { Offer } from "../interfaces/offer-interface";
+import * as _ from "lodash"
 
 @Injectable()
 export class OfferService {
@@ -22,9 +23,10 @@ getList(currentLocation) {
       });
   }
 
-  getListByPro(searchTerm) {
-    console.log(searchTerm)
-    return this.http.get(`${environment.BASEURL}/api/offer/by-pro?searchTerm=${searchTerm}`, this.options)
+  getListByPro(searchTerm, position) {
+    let coords = _.values(position)[1]
+    
+    return this.http.get(`${environment.BASEURL}/api/offer/by-pro?searchTerm=${searchTerm}&location=${coords}`, this.options)
         .map(res => {
           return res.json()
         });

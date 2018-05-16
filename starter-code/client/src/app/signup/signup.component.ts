@@ -40,7 +40,6 @@ export class SignupComponent implements OnInit {
     
     // this.sessionService
       // .signup(this.formSignUp)
-    
       this.uploader.onBuildItemForm = (item, form) => {
         form.append('username', this.formSignUp.username);
         form.append('password', this.formSignUp.password);
@@ -52,7 +51,7 @@ export class SignupComponent implements OnInit {
         form.append('professionType', this.formSignUp.professionType)
          };
        this.uploader.uploadAll()
-        this.router.navigate(["/home"])
+        this.router.navigate(["/login"])
      }
 
      profTrue(){

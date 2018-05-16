@@ -7,16 +7,20 @@
 
     <div class="col-md-7">
       <h1>{{sessionService.user.username}}</h1>
-      <a [routerLink]="['/offer']" class="btn btn-primary">Search professionals</a>
+      <!-- <a [routerLink]="['/offer']" class="btn btn-primary">Search professionals</a>
       <a [routerLink]="['/user/edit']" class="btn btn-primary">Edit your profile</a>
- 
+  -->
  <div *ngIf="sessionService.user.isProf">
-    <a [routerLink]="['/user/edit']" class="btn btn-primary">Edit your profile</a>
- </div>
+   <h3>Hello {{sessionService.user.username}}!</h3>
+    <div class="imgProfileHome">
+        <img height="300" [src]="sessionService.user.imgProfile" />
+      </div>
+    </div>
+    <a [routerLink]="['/user/edit']" class="btn btn-primary">Edit your professional profile</a>
 </div>
     <div class="col-md-5 text-right">
      
-      <button (click)="sessionService.logout().subscribe()" class="btn btn-primary">Logout</button>
+     
 
     
 

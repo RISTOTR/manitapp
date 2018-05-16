@@ -19,7 +19,6 @@ router.get("/", (req, res, next) => {
     .catch(e => next(e));
 });
 
-
 //show one
 router.get("/detail/:id", (req, res, next) => {
   Offer.findById(req.params.id)
@@ -59,13 +58,13 @@ router.post("/new", loggedin, (req, res, next) => {
         location
       });
 
-       newOffer
-       .save()
-       .then(user => res.status(200).json(user))
-       .catch(err => {
-         console.log(err);
-         res.status(500).json(err);
-       });
+      newOffer
+        .save()
+        .then(user => res.status(200).json(user))
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
     });
 });
 
@@ -87,7 +86,6 @@ router.put("/edit/:id", loggedin, (req, res, next) => {
     return res.status(500).json("Bad privileges");
   }
   const updates = _.pick(req.body, fields);
-  console.log(updates);
   Offer.findByIdAndUpdate(req.params.id, updates, { new: true })
     .then(offer => res.status(200).json(offer))
     .catch(err => {
@@ -118,44 +116,43 @@ router.delete("/delete/:id", loggedin, (req, res, next) => {
     });
 });
 
-
-
 // Retrieve Near you passing KM as a param
 router.post("/near", (req, res, next) => {
-
+  
   Offer.find({
-    location:
-      { $near :
-         {
-           $geometry: req.body.currentLocation,
-           $minDistance: 10,
-           $maxDistance: 1000
-         }
+    location: {
+      $near: {
+        $geometry: req.body.currentLocation,
+        $minDistance: 10,
+        $maxDistance: 1000
       }
-  })
-
-    .then(offers => {
-      
-      return res.json(offers)
+    }
+  }).then(offers => {
+      return res.json(offers);
     })
     .catch(e => {
-      console.log(e)
-      next(e)
+      console.log(e);
+      next(e);
     });
 });
 
-
 router.get("/by-pro", (req, res, next) => {
-  const {searchTerm} = req.query;
-
+  const { searchTerm,location } = req.query;
+  console.log(location)
+  let location2 = location.split(",").reverse().join(",")
+  console.log(location2)
+  
   Offer.find()
-  .populate('prof')
-  .then(offers=>{
-    let filteredOffers = _.find(offers, e => e.prof.professionType == searchTerm)
-    console.log('filteredOffers')
-    res.status(200).json(filteredOffers);
-  })
-  .catch(e=>console.log(e))
-})
+    .populate("prof")
+    .then(offers => {
+      let filteredOffers = _.pickBy(
+        offers,
+        e => e.prof.professionType == searchTerm
+      );
+      console.log(filteredOffers);
+       res.status(200).json(filteredOffers);
+    })
+    .catch(e => console.log(e));
+});
 
 module.exports = router;

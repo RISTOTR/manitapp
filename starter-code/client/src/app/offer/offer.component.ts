@@ -5,6 +5,7 @@ import { User } from "../interfaces/user-interface";
 import { OfferService } from "../services/offer.service";
 import { UserService } from "../services/user.service";
 import { Offer } from "../interfaces/offer-interface";
+import * as _ from 'lodash'
 
 @Component({
   selector: "app-offer",
@@ -48,6 +49,7 @@ export class OfferComponent implements OnInit {
   ngOnInit() {
     this.findMe();
     this.sessionService.isLoggedIn().subscribe(u => (this.currentUser = u));
+    
   }
 
   findMe() {
@@ -68,7 +70,6 @@ export class OfferComponent implements OnInit {
 
         this.offerService.getList(myPosition2).subscribe(offers => {
           this.offers = offers;
-          console.log(this.offer)
           offers.forEach(e => {
             this.lat = e.location.coordinates[0];
             this.lng = e.location.coordinates[1];
@@ -85,9 +86,20 @@ export class OfferComponent implements OnInit {
   }
 
   getListByPro() {
-    this.offerService.getListByPro(this.searchTerm).subscribe(offers  => {
+    this.offerService.getListByPro(this.searchTerm, this.myPosition).subscribe(offers  => {
       this.offers = offers;
-      console.log(this.offers)
+      
+      let locations =  _.mapValues(this.offers, 'location.coordinates')
+      this.markers = _.values(locations).map(coord=>JSON.parse(`{"lat":${coord[0]},"lng":${coord[1]}}`))
     })
   }
+
+
+  
+
+
+
+
+
+
 }

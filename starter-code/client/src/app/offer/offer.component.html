@@ -1,23 +1,26 @@
 <app-nav-bar></app-nav-bar>
 
-<div *ngIf="currentUser">
+<!-- <div *ngIf="currentUser">
   <h1>{{sessionService.user.username}}</h1>
   <a [routerLink]="['/user']" class="btn btn-primary">Edit your profile</a>
   <button (click)="sessionService.logout().subscribe()" class="btn btn-primary">Logout</button>
-</div>
+</div> -->
 
 <div>
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
     <!-- <agm-marker *ngIf="lat" [latitude]=lat [longitude]=lng></agm-marker> -->
-    <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng"></agm-marker>
+    <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng">
+        <!-- <agm-info-window>Börk</agm-info-window> -->
+    </agm-marker>
   </agm-map>
 </div>
 
 <div class="text-center">
   <div class="form-group">
-    <label> What are you looking for </label>
+    <label> What kind of professional are you looking for </label>
     <select class="form-control" [(ngModel)]="searchTerm" name="searchTerm">
-      <option selected disabled>Select an option</option>
+      <!-- <option selected disabled>Select an option</option> -->
+      
       <option value="Electrician">Electrician</option>
       <option value="Plumber">Plumber</option>
       <option value="Locksmith">Locksmith</option>
