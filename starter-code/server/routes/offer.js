@@ -19,15 +19,6 @@ router.get("/", (req, res, next) => {
     .catch(e => next(e));
 });
 
-// router.get("/offers", loggedin, (req, res, next) => {
-//     Offer.find({ user: req.user._id })
-//       .then(offer => {
-//         return res.status(200).json(offer);
-//       })
-//       .catch(err => {
-//         return res.status(500).json(err);
-//       });
-//   });
 
 //show one
 router.get("/detail/:id", (req, res, next) => {
@@ -127,19 +118,11 @@ router.delete("/delete/:id", loggedin, (req, res, next) => {
     });
 });
 
-/* router.get("/near", function(req, res) {
-  // Process the data received in req.body
-  res.redirect("3000");
-}); */
+
 
 // Retrieve Near you passing KM as a param
 router.post("/near", (req, res, next) => {
-  console.log('near')
-  console.log(req.body.currentLocation)
-  //req.body.currentLocation
-  /* if (req.body.km == undefined || req.body.km > 3000) {
-    req.body.km = 3000;
-  } */
+
   Offer.find({
     location:
       { $near :
@@ -152,7 +135,7 @@ router.post("/near", (req, res, next) => {
   })
 
     .then(offers => {
-      console.log(offers)
+      
       return res.json(offers)
     })
     .catch(e => {
@@ -160,5 +143,19 @@ router.post("/near", (req, res, next) => {
       next(e)
     });
 });
+
+
+router.get("/by-pro", (req, res, next) => {
+  const {searchTerm} = req.query;
+
+  Offer.find()
+  .populate('prof')
+  .then(offers=>{
+    let filteredOffers = _.find(offers, e => e.prof.professionType == searchTerm)
+    console.log('filteredOffers')
+    res.status(200).json(filteredOffers);
+  })
+  .catch(e=>console.log(e))
+})
 
 module.exports = router;

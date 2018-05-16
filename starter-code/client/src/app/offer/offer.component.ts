@@ -17,11 +17,13 @@ export class OfferComponent implements OnInit {
   offers: any;
   myPosition: any;
   markers: Array<any> = [];
-
+  currentUser: User;
   title: string = "Your ubication";
   lat: number;
   lng: number;
   zoom: number = 15;
+
+  searchTerm: string;
 
   // offer  = {
   //   offerTitle: '',
@@ -44,8 +46,8 @@ export class OfferComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //this.searchOffer();
     this.findMe();
+    this.sessionService.isLoggedIn().subscribe(u => (this.currentUser = u));
   }
 
   findMe() {
@@ -63,27 +65,29 @@ export class OfferComponent implements OnInit {
           type: "Point",
           coordinates: [this.lat, this.lng]
         };
-        console.log(this.myPosition)
-       // this.markers.push(this.myPosition.coordinates)
 
         this.offerService.getList(myPosition2).subscribe(offers => {
           this.offers = offers;
+          console.log(this.offer)
           offers.forEach(e => {
             this.lat = e.location.coordinates[0];
             this.lng = e.location.coordinates[1];
-            console.log(e);
             this.markers.push({
               lat: e.location.coordinates[0],
               lng: e.location.coordinates[1]
             });
           });
         });
-        console.log(position);
       });
     } else {
       alert("Geolocation is not supported by this browser.");
     }
   }
 
-  searchOffer() {}
+  getListByPro() {
+    this.offerService.getListByPro(this.searchTerm).subscribe(offers  => {
+      this.offers = offers;
+      console.log(this.offers)
+    })
+  }
 }

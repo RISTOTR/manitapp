@@ -22,8 +22,7 @@ export class SignupComponent implements OnInit {
     name: "",
     lastname: "",
     telephone: "",
-  
-    email:"",
+     email:"",
     isProf: false, 
     professionType: "",
     //userTags: [""],

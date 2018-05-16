@@ -18,10 +18,17 @@ constructor(private http: Http) { }
 getList(currentLocation) {
   return this.http.post(`${environment.BASEURL}/api/offer/near`, {currentLocation}, this.options)
       .map(res => {
-        console.log(res)  
         return res.json()
       });
   }
+
+  getListByPro(searchTerm) {
+    console.log(searchTerm)
+    return this.http.get(`${environment.BASEURL}/api/offer/by-pro?searchTerm=${searchTerm}`, this.options)
+        .map(res => {
+          return res.json()
+        });
+    }
 
    //show professional´s offer
   showOneOffer(id) {
@@ -33,7 +40,6 @@ getList(currentLocation) {
   newOffer(offer) {
     return this.http.post(`${environment.BASEURL}/api/offer/new`, offer, this.options)
       .map(res => {
-        console.log(res)  
         return res.json()
       });
   }
@@ -47,15 +53,16 @@ getList(currentLocation) {
 
   //Edit hire
   editOffer(id) {
+    
     return this.http
-      .get(`${environment.BASEURL}/api/offer/edit/${id}`)
+      .put(`${environment.BASEURL}/api/offer/edit/${id}`, this.options)
       .map(res => res.json());
   }
 
   //Delete hire
   deleteOffer(iOffer) {
     return this.http
-      .get(`${environment.BASEURL}/api/offer/delete/${iOffer}`)
+      .put(`${environment.BASEURL}/api/offer/delete/${iOffer}`, this.options)
       .map(res => res.json());
   }
 
@@ -73,4 +80,4 @@ getList(currentLocation) {
 
 }
 
-
+}

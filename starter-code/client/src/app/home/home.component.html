@@ -1,21 +1,24 @@
+<app-nav-bar></app-nav-bar>
 
 
 
-<div class="container">
 
   <div class="row" *ngIf="sessionService.user">
 
     <div class="col-md-7">
       <h1>{{sessionService.user.username}}</h1>
       <a [routerLink]="['/offer']" class="btn btn-primary">Search professionals</a>
-      <a [routerLink]="['/user']" class="btn btn-primary">Edit your profile</a>
-    <!-- <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a> -->
-    </div>
+      <a [routerLink]="['/user/edit']" class="btn btn-primary">Edit your profile</a>
+ 
+ <div *ngIf="sessionService.user.isProf">
+    <a [routerLink]="['/user/edit']" class="btn btn-primary">Edit your profile</a>
+ </div>
+</div>
     <div class="col-md-5 text-right">
-      <!-- <a [routerLink]="['/threads/new']">New Thread</a> -->
+     
       <button (click)="sessionService.logout().subscribe()" class="btn btn-primary">Logout</button>
 
-      <h1>{{ title }}</h1>
+    
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
@@ -34,4 +37,4 @@
 
   <div>
   
-  </div>
+

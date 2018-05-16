@@ -20,9 +20,9 @@ constructor(private http: Http) { }
       .map(res => res.json());
  }
 
-editUser() {
+editUser(user) {
     return this.http
-      .get(`${environment.BASEURL}/api/user/edit`)
+      .put(`${environment.BASEURL}/api/user/edit`, user, this.options)
       .map(res => res.json());
   }
 

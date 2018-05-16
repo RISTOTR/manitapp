@@ -54,9 +54,13 @@ router.get("/:professionType", loggedin, (req, res, next) => {
 // Update
 router.put("/edit", loggedin, (req, res, next) => {
   const updates = _.pick(req.body, fields);
+  console.log(updates)
 
 User.findByIdAndUpdate(req.user._id, updates, {new: true})
-  .then(userEdit => res.status(200).json(userEdit))
+
+  .then(userEdit => {
+    console.log(userEdit)
+    res.status(200).json(userEdit)})
   .catch(err => res.status(500).json(err));
 });
 

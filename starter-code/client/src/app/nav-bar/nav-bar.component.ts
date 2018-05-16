@@ -12,10 +12,11 @@ import { User } from "../Interfaces/user-interface";
 })
 export class NavBarComponent implements OnInit {
   user:User;
-
+  currentUser:User;
   constructor(public sessionService: SessionService, public router: Router, public userService: UserService) { }
 
   ngOnInit() {
+    this.sessionService.isLoggedIn().subscribe(u=>this.currentUser=u)
     this.profile();
   }
 
@@ -27,7 +28,7 @@ export class NavBarComponent implements OnInit {
 
   logout() {
     this.sessionService.logout().subscribe(() => {
-      this.user = null;
+      this.currentUser = null;
       this.router.navigate(["/home"]);
     });
   }

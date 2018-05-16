@@ -5,7 +5,9 @@ import { UserComponent } from './user/user.component';
 import { HomeComponent } from "./home/home.component";
 import { OfferComponent } from "./offer/offer.component";
 import { HireComponent } from "./hire/hire.component";
-import { NewOfferComponent} from "./New-Offer/New-Offer.component"
+import { NewOfferComponent} from "./New-Offer/New-Offer.component";
+import { EditOfferComponent} from "./edit-offer/edit-offer.component";
+import { EditUserComponent } from "./edit-user/edit-user.component";
 
 
 export const routes: Routes = [
@@ -17,7 +19,9 @@ export const routes: Routes = [
     { path: 'user', component: UserComponent},
     {path: 'offer', component: OfferComponent},
     {path: 'hire', component: HireComponent},
-    {path: 'offer/new', component: NewOfferComponent}
+    {path: 'offer/new', component: NewOfferComponent},
+    {path: 'user/edit', component: EditUserComponent},
+    {path: 'offer/edit', component: EditOfferComponent}
     
     
  

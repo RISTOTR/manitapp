@@ -19,6 +19,8 @@ import { UserService } from './services/user.service';
 import { NewOfferComponent } from './New-Offer/New-Offer.component';
 import { OfferService } from './services/offer.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { EditOfferComponent } from './edit-offer/edit-offer.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 
@@ -35,7 +37,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     HireComponent,
     UserComponent,
     NewOfferComponent,
-    NavBarComponent
+    NavBarComponent,
+    EditOfferComponent,
+    EditUserComponent
 ],
   imports: [
     BrowserModule,
