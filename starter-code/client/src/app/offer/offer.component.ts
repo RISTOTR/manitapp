@@ -5,7 +5,9 @@ import { User } from "../interfaces/user-interface";
 import { OfferService } from "../services/offer.service";
 import { UserService } from "../services/user.service";
 import { Offer } from "../interfaces/offer-interface";
-import * as _ from 'lodash'
+import * as _ from 'lodash';
+import { locateHostElement } from "@angular/core/src/render3/instructions";
+
 
 @Component({
   selector: "app-offer",
@@ -26,30 +28,21 @@ export class OfferComponent implements OnInit {
 
   searchTerm: string;
 
-  // offer  = {
-  //   offerTitle: '',
-  //   offerDescription: '',
-  //   lat: 40.4167754,
-  //   lng: -3.7038123,
-  //   unlockDistance: 20,
-  // };
-
-  //currentLocation:  {lat:number,lng:number,coordinates:Array<any>}
-
-  //postalcode: string;
-  // offers: any;
+  
 
   constructor(
     public router: Router,
     public sessionService: SessionService,
     public offerService: OfferService,
     public userService: UserService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.findMe();
     this.sessionService.isLoggedIn().subscribe(u => (this.currentUser = u));
     
+   
   }
 
   findMe() {
@@ -78,11 +71,13 @@ export class OfferComponent implements OnInit {
               lng: e.location.coordinates[1]
             });
           });
+         
         });
       });
     } else {
       alert("Geolocation is not supported by this browser.");
     }
+    
   }
 
   getListByPro() {

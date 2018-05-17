@@ -21,6 +21,7 @@ import { OfferService } from './services/offer.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EditOfferComponent } from './edit-offer/edit-offer.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 
 
 
@@ -39,7 +40,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     NewOfferComponent,
     NavBarComponent,
     EditOfferComponent,
-    EditUserComponent
+    EditUserComponent,
+    OfferDetailComponent
 ],
   imports: [
     BrowserModule,

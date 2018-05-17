@@ -1,6 +1,6 @@
 <h1> Authentication Sample </h1>
 <form>
-  <h2> Login or Signup </h2>
+  <h2> Login </h2>
   <label> Username </label>
   <input type="text" [(ngModel)]="username" name="username"/>
   <br>
@@ -9,7 +9,7 @@
 
   <div style="padding-top:30px">
     <button (click)="login()"> login </button>
-    <button (click)="signup()"> signup </button>
+   
   </div>
 </form>
 <p class="error"> {{ error }} </p>

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const User =require('../models/User');
 
 const offerSchema = new Schema ({
+    name: String,
     offerTitle: String,
     offerDescription: String,
     price: Number,

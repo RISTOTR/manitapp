@@ -22,6 +22,7 @@ router.get("/", (req, res, next) => {
 //show one
 router.get("/detail/:id", (req, res, next) => {
   Offer.findById(req.params.id)
+  .populate("prof")
     .then(object => res.json(object))
     .catch(e => next(e));
 });
@@ -30,6 +31,7 @@ router.get("/detail/:id", (req, res, next) => {
 router.post("/new", loggedin, (req, res, next) => {
   const prof = req.user.id;
   const {
+    name,
     offerTitle,
     offerDescription,
     price,
@@ -48,6 +50,7 @@ router.post("/new", loggedin, (req, res, next) => {
       var location = { type: "Point", coordinates: [lat, lng] };
 
       const newOffer = new Offer({
+        name,
         offerTitle,
         offerDescription,
         price,
@@ -72,6 +75,7 @@ router.post("/new", loggedin, (req, res, next) => {
 
 router.get("/edit/:id", loggedin, myOffer, (req, res, next) => {
   Offer.findById(req.params.id)
+  .populate("prof")
     .then(offer => {
       console.log("entra");
       return res.status(200).json(offer);

@@ -8,6 +8,7 @@ import { HireComponent } from "./hire/hire.component";
 import { NewOfferComponent} from "./New-Offer/New-Offer.component";
 import { EditOfferComponent} from "./edit-offer/edit-offer.component";
 import { EditUserComponent } from "./edit-user/edit-user.component";
+import { OfferDetailComponent} from "./offer-detail/offer-detail.component";
 
 
 export const routes: Routes = [
@@ -21,7 +22,8 @@ export const routes: Routes = [
     {path: 'hire', component: HireComponent},
     {path: 'offer/new', component: NewOfferComponent},
     {path: 'user/edit', component: EditUserComponent},
-    {path: 'offer/edit', component: EditOfferComponent}
+    {path: 'offer/edit', component: EditOfferComponent},
+    {path: 'offer/detail/:id', component: OfferDetailComponent}
     
     
  

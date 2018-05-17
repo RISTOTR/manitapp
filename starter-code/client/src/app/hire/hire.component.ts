@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../services/session.service';
+import { ActivatedRoute, Router } from "@angular/router";
+import { User } from "../interfaces/user-interface";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: 'app-hire',

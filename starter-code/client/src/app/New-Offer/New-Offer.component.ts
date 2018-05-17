@@ -24,6 +24,7 @@ export class NewOfferComponent implements OnInit {
   offer: Offer;
 
   formOffer = {
+    name:"",
     offerTitle: "",
     offerDescription: "",
     price: "",
@@ -44,8 +45,7 @@ export class NewOfferComponent implements OnInit {
     //console.log(form.value)
     form.value.id = this.user._id;
     this.offerService.newOffer(form.value).subscribe(data=>{
-      console.log('back in the comp')
-      console.log(data)
+     
       this.router.navigate(["/home"])
     })
 
