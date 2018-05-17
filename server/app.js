@@ -96,9 +96,9 @@ app.use('/api/offer', offerRouter);
 const hireRouter = require("./routes/hire");
 app.use('/api/hire', hireRouter);
 
-// app.use(function(req, res) {
-//   res.sendfile(__dirname + '/public/index.html');
-// });
+app.use(function(req, res) {
+  res.sendfile(__dirname + '/public/index.html');
+});
 
 
 
