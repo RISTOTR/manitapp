@@ -63,6 +63,8 @@ export class OfferComponent implements OnInit {
 
         this.offerService.getList(myPosition2).subscribe(offers => {
           this.offers = offers;
+          console.log(this.offers instanceof Object)
+          console.log(Array.isArray(this.offers))
           offers.forEach(e => {
             this.lat = e.location.coordinates[0];
             this.lng = e.location.coordinates[1];
@@ -81,11 +83,12 @@ export class OfferComponent implements OnInit {
   }
 
   getListByPro() {
+    
     this.offerService.getListByPro(this.searchTerm, this.myPosition).subscribe(offers  => {
       this.offers = offers;
-      
       let locations =  _.mapValues(this.offers, 'location.coordinates')
       this.markers = _.values(locations).map(coord=>JSON.parse(`{"lat":${coord[0]},"lng":${coord[1]}}`))
+      console.log(this.markers)
     })
   }
 

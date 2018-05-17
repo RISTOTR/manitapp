@@ -1,20 +1,17 @@
-<app-nav-bar></app-nav-bar>
+
 
 <!-- <div *ngIf="currentUser">
   <h1>{{sessionService.user.username}}</h1>
   <a [routerLink]="['/user']" class="btn btn-primary">Edit your profile</a>
   <button (click)="sessionService.logout().subscribe()" class="btn btn-primary">Logout</button>
 </div> -->
-
-<div>
+<div *ngIf="!offers">Buscado profesionales cerca...</div>
+<div *ngIf="offers">
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-    
-    
     <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng">
         <agm-info-window>{{offers[i].name}} <br>{{ offers[i].offerTitle | json }} <br>{{ offers[i].offerDescription | json}}
            <span [routerLink]="['/offer/detail', offers[i]._id]">See detail</span>
         </agm-info-window>
-       
       </agm-marker>
   </agm-map>
 </div>

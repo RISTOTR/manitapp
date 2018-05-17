@@ -22,6 +22,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EditOfferComponent } from './edit-offer/edit-offer.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
+import { HireService } from './services/hire.service';
 
 
 
@@ -52,7 +53,7 @@ import { OfferDetailComponent } from './offer-detail/offer-detail.component';
       apiKey: 'AIzaSyB90SbQDcUbB3g32fUUKuEDefCYn62S_zE'
     })
   ],
-  providers: [SessionService,UserService,OfferService],
+  providers: [SessionService,UserService,OfferService,HireService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,7 +9,7 @@
           <i>OfferDescription: {{offer.offerDescription}}</i>
           <i>Minimum price: {{offer.price}}</i>
           <i>Address: {{offer.address}}</i>
-          <a [routerLink]="['/hire']" class="btn btn-primary">Contact professional</a>
+          <a [routerLink]="['/hire/new/', offer._id]" class="btn btn-primary">Contact professional</a>
         </div>
 
       </div>

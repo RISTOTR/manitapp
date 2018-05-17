@@ -10,6 +10,9 @@
   <h2>BIENVENIDO SR PATATA</h2>
   <button (click)="sessionService.logout().subscribe()"> Logout </button>
 </div> -->
-
-<router-outlet></router-outlet>
+<app-nav-bar></app-nav-bar>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer></footer>
 
