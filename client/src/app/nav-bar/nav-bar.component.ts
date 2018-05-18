@@ -13,11 +13,13 @@ import { User } from "../Interfaces/user-interface";
 export class NavBarComponent implements OnInit {
   user:User;
   currentUser:User;
-  constructor(public sessionService: SessionService, public router: Router, public userService: UserService) { }
+  constructor(public sessionService: SessionService, public router: Router, public userService: UserService) { 
+    this.sessionService.userEvent.subscribe(u=> this.currentUser=u);
+  }
 
   ngOnInit() {
     this.sessionService.isLoggedIn().subscribe(u=>this.currentUser=u)
-    // this.profile();
+    this.sessionService.userEvent.subscribe(u=> this.currentUser=u);
   }
 
   // profile() {
