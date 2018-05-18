@@ -9,6 +9,7 @@ import { UserService } from "../services/user.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  fullImagePath: string;
   user:User;
   
   currentUser:User;
@@ -17,7 +18,9 @@ export class HomeComponent implements OnInit {
   // lng: number = -3.698555;
   // zoom: number = 15;
 
-  constructor(public sessionService: SessionService, public userService: UserService) { }
+  constructor(public sessionService: SessionService, public userService: UserService) {
+    this.fullImagePath = '../../assets/images/firstpage.jpg'
+   }
 
   ngOnInit() {
     this.sessionService.isLoggedIn().subscribe(u => {

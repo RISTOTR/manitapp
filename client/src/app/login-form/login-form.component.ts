@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ["./login-form.component.css"]
 })
 export class LoginFormComponent implements OnInit {
+  fullImagePath: string;
   username: string;
   password: string;
  
@@ -15,7 +16,9 @@ export class LoginFormComponent implements OnInit {
 
   constructor(public sessionService: SessionService, public router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.fullImagePath = '../../assets/images/login2.jpg'
+  }
 
   login() {
     

@@ -17,14 +17,14 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
     this.sessionService.isLoggedIn().subscribe(u=>this.currentUser=u)
-    this.profile();
+    // this.profile();
   }
 
-  profile() {
-    this.userService.profileUser().subscribe(user => {
-      this.user = user;
-    });
-  }
+  // profile() {
+  //   this.userService.profileUser().subscribe(user => {
+  //     this.user = user;
+  //   });
+  // }
 
   logout() {
     this.sessionService.logout().subscribe(() => {

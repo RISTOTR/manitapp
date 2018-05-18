@@ -5,18 +5,24 @@
   <a [routerLink]="['/user']" class="btn btn-primary">Edit your profile</a>
   <button (click)="sessionService.logout().subscribe()" class="btn btn-primary">Logout</button>
 </div> -->
-<div *ngIf="!offers">Buscado profesionales cerca...</div>
+<div class="container">
+<div *ngIf="!offers">Buscando profesionales cerca...</div>
 <div *ngIf="offers">
+  <div class="mapa">
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <div *ngIf="bol">
     <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng">
         <agm-info-window>{{offers[i].name}} <br>{{ offers[i].offerTitle | json }} <br>{{ offers[i].offerDescription | json}}
            <span [routerLink]="['/offer/detail', offers[i]._id]">See detail</span>
         </agm-info-window>
       </agm-marker>
+    </div>
   </agm-map>
+  </div>
 </div>
 
-<div class="text-center">
+
+<div class="text-center ">
   <div class="form-group">
     <label> What kind of professional are you looking for </label>
     <select class="form-control" [(ngModel)]="searchTerm" name="searchTerm">
@@ -29,4 +35,5 @@
     </select>
   </div>
   <button (click)="getListByPro()" type="submit" class="btn btn-outline-info btn-lg btn-block">Filter professionals</button>
+</div>
 </div>

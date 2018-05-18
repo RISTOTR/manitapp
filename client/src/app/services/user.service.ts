@@ -36,20 +36,20 @@ deleteUser() {
   
   //Perfil privado del usuario
   
-  profileUser() {
+  // profileUser() {
     
-    return this.http
-      .get(`${environment.BASEURL}/api/user/profile`, this.options)
-      .map(res => {
+  //   return this.http
+  //     .get(`${environment.BASEURL}/api/user/profile`, this.options)
+  //     .map(res => {
        
-        return res.json()
-      })
-       .map(user => {
+  //       return res.json()
+  //     })
+  //      .map(user => {
         
-       this.user = user
-        return user
-      });   
-  }
+  //      this.user = user
+  //       return user
+  //     });   
+  // }
 
 // getOffers() {
 //   return this.http

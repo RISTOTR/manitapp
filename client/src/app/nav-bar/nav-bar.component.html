@@ -1,13 +1,14 @@
+
+
 <nav class="navbar fixed-top navbar-light bg-light">
   <a [routerLink]="['/home/']">
-    <i class="fas fa-paw"></i> ManitApp
-  </a>
+    <i class="fas fa-paw"></i><span style= "color:black; font-size: 26px"> Tu Ñapa</span></a>
 
   
 
 
   <div *ngIf="currentUser">
-    {{currentUser.username | uppercase}}
+    <!-- {{currentUser.username | uppercase}} -->
     <a class="navbar-brand" [routerLink]="['/user/edit/']">
       <i class="fas fa-user"></i>Edit profile</a>
     <a class="navbar-brand" [routerLink]="['/offer/']">

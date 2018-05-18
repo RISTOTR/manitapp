@@ -1,0 +1,20 @@
+body {
+    color: #fff;
+    background: #19aa8d;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h2 {
+    margin-top:120px;
+    color: rgb(155, 169, 207);
+  }
+
+  img {
+      margin-top: 100px;
+      margin-left: 50px;
+  }
+
+  .form-control {
+  background-color: #fff;
+}
+

@@ -1,0 +1,27 @@
+
+
+
+
+<div *ngIf="sessionService.user">
+    <div class="container hirelist">
+    
+      <div class="row">
+       
+        <div class="offset-lg-4 col-lg-4 col-sm-5 col-12" *ngFor="let h of hires" class="col-md-4">
+            <div class="card">
+              <h3>Message: </h3>
+              <p>Date: {{h.date | date:medium}}</p>
+          <p>Address: {{h.address}}</p>
+          <p>{{h.observations}}</p>
+          <p>tel: {{h.telephone}}</p>
+          <p>Status: <span style="color:red">{{h.status}}</span></p>
+          <!-- <button *ngIf="h.status!='Rejected'" (click)="cancel(h._id)" class="btn btn-outline-no">Cancelar</button> -->
+      </div>
+        </div>
+          
+     
+   
+    </div>
+    </div>
+    </div>
+

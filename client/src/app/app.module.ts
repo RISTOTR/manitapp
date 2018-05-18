@@ -23,6 +23,8 @@ import { EditOfferComponent } from './edit-offer/edit-offer.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { HireService } from './services/hire.service';
+import { HireListComponent } from './hireList/hireList.component';
+
 
 
 
@@ -42,7 +44,9 @@ import { HireService } from './services/hire.service';
     NavBarComponent,
     EditOfferComponent,
     EditUserComponent,
-    OfferDetailComponent
+    OfferDetailComponent,
+    HireListComponent,
+  
 ],
   imports: [
     BrowserModule,

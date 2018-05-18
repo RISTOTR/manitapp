@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { SessionService } from "../services/session.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { User } from "../interfaces/user-interface";
@@ -8,23 +8,15 @@ import { OfferService } from "../services/offer.service";
 import { HireService } from "../services/hire.service";
 
 @Component({
-  selector: "app-hire",
-  templateUrl: "./hire.component.html",
-  styleUrls: ["./hire.component.scss"]
+  selector: 'app-hireList',
+  templateUrl: './hireList.component.html',
+  styleUrls: ['./hireList.component.scss']
 })
-export class HireComponent implements OnInit {
-  idOffer: string;
-  hire: Hire;
+export class HireListComponent implements OnInit {
+  hires:any;
   user: User;
   currentUser: User;
 
-  hireForm = {
-    name:"",
-    address: "",
-    date: "",
-    observations: "",
-    telephone: ""
-  };
 
   constructor(
     public sessionService: SessionService,
@@ -33,23 +25,13 @@ export class HireComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public hireService: HireService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.sessionService.isLoggedIn().subscribe(u => {
       this.currentUser = u});
-    this.route.params.subscribe(params => {
-      console.log(params["id"])
-      this.idOffer = String(params["id"]);
-    });
-  }
+      this.hireService.getHires().subscribe(data => (this.hires=data))
 
-  saveHire(hireForm) {
-    hireForm.value.user=this.currentUser._id
-    this.hireService
-      .createHire(hireForm.value, this.idOffer)
-      .subscribe(data => {
-        this.router.navigate(["/offer"]);
-      });
-  }
+      }
+
 }

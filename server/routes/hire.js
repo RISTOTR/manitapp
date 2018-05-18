@@ -11,16 +11,17 @@ const fields = Object.keys(_.omit(Hire.schema.paths, ["__v", "_id"]));
 // new hire
 router.post("/new/:idOffer", loggedin, (req, res, next) => {
   const { idOffer } = req.params;
-  console.log(idOffer)
-  const { user,address, date, observations, price } = req.body;
-  console.log(address, date, observations, price);
+  // console.log(idOffer)
+  const { user,name,address, date, observations, telephone } = req.body;
+  // console.log(address, date, observations, price);
    const newHire = new Hire({
       user,
       offer:idOffer,
+      name,
       address,
       date,
       observations,
-      price,
+      telephone,
     });
   
     newHire
@@ -51,16 +52,16 @@ router.post("/new/:idOffer", loggedin, (req, res, next) => {
 
 //get edit
 
-router.get("/edit/:id", [loggedin, myHire], (req, res, next) => {
-  Hire.findById(req.params.id)
-    .then(hire => {
-      console.log("entra");
-      return res.status(200).json(hire);
-    })
-    .catch(err => {
-      return res.status(500).json(err);
-    });
-});
+// router.get("/list", [loggedin, myHire], (req, res, next) => {
+//   Hire.find(req.params.id)
+//     .then(hire => {
+      
+//       return res.status(200).json(hire);
+//     })
+//     .catch(err => {
+//       return res.status(500).json(err);
+//     });
+// });
 
 //edit
 router.put("/edit/:id", loggedin, (req, res, next) => {
@@ -108,14 +109,16 @@ router.post("/status/:id", loggedin, (req, res, next) => {
 //     .catch( err => res.status(500).json(err));
 //   });
 
-// router.get("/hires", loggedin, (req, res, next) => {
-//     Hire.find({ user: req.user._id })
-//       .then(hire => {
-//         return res.status(200).json(hire);
-//       })
-//       .catch(err => {
-//         return res.status(500).json(err);
-//       });
-//   });
+router.get("/list", loggedin, (req, res, next) => {
+    Hire.find({ user: req.user._id })
+    .populate("user")
+    .populate("prof")
+      .then(hire => {
+        return res.status(200).json(hire);
+      })
+      .catch(err => {
+        return res.status(500).json(err);
+      });
+  });
 
 module.exports = router;

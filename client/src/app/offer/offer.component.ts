@@ -7,6 +7,7 @@ import { UserService } from "../services/user.service";
 import { Offer } from "../interfaces/offer-interface";
 import * as _ from 'lodash';
 import { locateHostElement } from "@angular/core/src/render3/instructions";
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class OfferComponent implements OnInit {
   lat: number;
   lng: number;
   zoom: number = 15;
-
+  bol: Boolean = false;
   searchTerm: string;
 
   
@@ -39,8 +40,12 @@ export class OfferComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.bol = true;
     this.findMe();
-    this.sessionService.isLoggedIn().subscribe(u => (this.currentUser = u));
+    this.sessionService.isLoggedIn().subscribe(u => {
+      (this.currentUser = u)
+      console.log("PRUEBA")
+    });
     
    
   }
@@ -73,9 +78,10 @@ export class OfferComponent implements OnInit {
               lng: e.location.coordinates[1]
             });
           });
-         
+
         });
       });
+      
     } else {
       alert("Geolocation is not supported by this browser.");
     }
@@ -83,12 +89,24 @@ export class OfferComponent implements OnInit {
   }
 
   getListByPro() {
-    
+    this.bol = false;
     this.offerService.getListByPro(this.searchTerm, this.myPosition).subscribe(offers  => {
       this.offers = offers;
       let locations =  _.mapValues(this.offers, 'location.coordinates')
-      this.markers = _.values(locations).map(coord=>JSON.parse(`{"lat":${coord[0]},"lng":${coord[1]}}`))
-      console.log(this.markers)
+      this.markers = []
+      _.values(locations).map(coord=>{
+        console.log(coord)
+        
+        this.markers.push(JSON.parse(`{"lat":${coord[0]},"lng":${coord[1]}}`))
+        //this.bol = true;
+        //this.findMe()
+        setTimeout(function(){ 
+          console.log(this.markers)
+          this.bol = true; 
+          console.log("SETTIME")
+        }.bind(this), 1000);
+      })
+      console.log("---------------",this.markers)
     })
   }
 

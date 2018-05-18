@@ -7,10 +7,11 @@ const hireSchema = new Schema(
   {
     offer: { type: Schema.Types.ObjectId, ref: "Offer" },
     user: { type: Schema.Types.ObjectId, ref: "User" },
+    name: String,
     address: String,
     date: Date,
     observations: String,
-    price: Number,
+    telephone: Number,
     status: {
         type: String,
         enum: ['Pending', 'Accepted', 'Rejected'],

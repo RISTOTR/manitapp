@@ -1,36 +1,47 @@
+
 <div class="row" *ngIf="sessionService.user">
 
-    <div class="col-md-7">
+    
       <!-- <h1>{{sessionService.user.username}}</h1> -->
       <!-- <a [routerLink]="['/offer']" class="btn btn-primary">Search professionals</a>
       <a [routerLink]="['/user/edit']" class="btn btn-primary">Edit your profile</a>
   -->
- <div *ngIf="sessionService.user.isProf">
-   <h3>Hello {{sessionService.user.username}}!</h3>
-    <div class="imgProfileHome">
-        <img height="300" [src]="sessionService.user.imgProfile" />
+ <div *ngIf="sessionService.user.isProf" class="col-md-12">
+   
+   <div class="row">
+
+      <div class="col-xs-6">
+        <img [src]="fullImagePath">
+        
+      </div>
+      <div class="col-xs-6">
+        <h2 class="hello" >Hello {{sessionService.user.username}}!</h2>
+        <a [routerLink]="['/offer/new']" class="btn btn-secondary btn-home">Edit your professional profile</a>
+        <a [routerLink]="['/hire/list']" class="btn btn-secondary btn-home">Pending messages</a>
       </div>
     </div>
-    <a [routerLink]="['/offer/new']" class="btn btn-primary">Edit your professional profile</a>
-</div>
-    <div class="col-md-5 text-right">
-     
-     
-
     
-
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
-<!-- <agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map> -->
-
-    </div>
-
-  </div>
+</div>
+  
+</div>
+  
   <div *ngIf="!sessionService.user" class="col-md-12">
-    <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
-    <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a>
+    
+      <div class="row"> 
+
+          <div class="col-xs-12">
+              <img [src]="fullImagePath">
+          </div>
+
+          <div class="text-center">
+            <h1>Tu Ñapa</h1>
+            <h3>Perfect solution to find local</h3> 
+            <h3>professionals close to your home</h3>
+          </div>
+      </div>
+      
+    <!-- <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+    <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a> -->
   </div>
 
 

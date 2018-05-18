@@ -29,9 +29,9 @@ createHire(info, idOffer) {
         });
   }
 
-  getHire() {
+  getHires() {
     return this.http
-      .get(`${environment.BASEURL}/api/hire/`, this.options)
+      .get(`${environment.BASEURL}/api/hire/list`, this.options)
       .map(res => res.json());
   }
 
