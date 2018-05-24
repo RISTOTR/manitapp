@@ -24,6 +24,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { HireService } from './services/hire.service';
 import { HireListComponent } from './hireList/hireList.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
@@ -46,6 +47,7 @@ import { HireListComponent } from './hireList/hireList.component';
     EditUserComponent,
     OfferDetailComponent,
     HireListComponent,
+    FilterPipe
   
 ],
   imports: [

@@ -47,6 +47,7 @@ export class OfferComponent implements OnInit {
       console.log("PRUEBA")
     });
     
+    this.offerService
    
   }
 
