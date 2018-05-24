@@ -1,50 +1,74 @@
-
-<div class="row" *ngIf="sessionService.user">
-
+<div *ngIf="!sessionService.user" id="home">
     
-      <!-- <h1>{{sessionService.user.username}}</h1> -->
-      <!-- <a [routerLink]="['/offer']" class="btn btn-primary">Search professionals</a>
-      <a [routerLink]="['/user/edit']" class="btn btn-primary">Edit your profile</a>
-  -->
- <div *ngIf="sessionService.user.isProf" class="col-md-12">
-   
-   <div class="row">
+    <div class="row"> 
 
-      <div class="col-xs-6">
-        <img [src]="fullImagePath">
-        
-      </div>
-      <div class="col-xs-6">
-        <h2 class="hello" >Hello {{sessionService.user.username}}!</h2>
-        <a [routerLink]="['/offer/new']" class="btn btn-secondary btn-home">Edit your professional profile</a>
-        <a [routerLink]="['/hire/list']" class="btn btn-secondary btn-home">Pending messages</a>
-      </div>
+       
+
+        <div class="col text-center intro-text">
+          <h1 class="manitapp">ManitApp</h1>
+          <h3>Perfect solution to find local</h3> 
+          <h3 class=" intro-textcomplete">professionals close to your home</h3>
+        </div>
+
     </div>
-    
-</div>
-  
-</div>
-  
-  <div *ngIf="!sessionService.user" class="col-md-12">
-    
-      <div class="row"> 
 
-          <div class="col-xs-12">
-              <img [src]="fullImagePath">
-          </div>
+    </div>
 
-          <div class="text-center">
-            <h1>ManitApp</h1>
-            <h3>Perfect solution to find local</h3> 
-            <h3>professionals close to your home</h3>
+
+    <div  *ngIf="sessionService.user">
+
+
+
+    <div class="row">
+      <div *ngIf=sessionService.user.isProf id="home">
+        
+
+        <div class="text-center">
+          
+      <!-- <h1>Hello {{sessionService.user.username}}</h1> -->
+
+      <div class="col-xs-6 links-home">
+          <!-- <h2 class="hello" > {{sessionService.user.username}}!</h2> -->
+          <a [routerLink]="['/offer/new']" class="btn btn-secondary btn-home">Edit your professional profile</a>
+          <a [routerLink]="['/hire/list']" class="btn btn-secondary btn-message">Pending messages</a>
+        </div>
+
+
           </div>
-      </div>
+          </div>
+</div>
+</div>
+
+<div *ngIf="sessionService.user">
+<div  *ngIf="!sessionService.user.isProf" id="home">
+
+    <div class="row">
+     
+        
       
-    <!-- <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
-    <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a> -->
-  </div>
 
 
-  <div>
-  
+        <!-- <div class="text-center">
+      <h1>Hello {{sessionService.user.username}}</h1>
+          </div> -->
+          </div>
+</div>
+</div>
+
+
+
+<!-- <div *ngIf="sessionService.user.isProf" class="col-md-12">
+   
+    <div class="">
+ 
+       
+       
+         
+         <a [routerLink]="['/offer/new']" class="btn btn-secondary btn-home">Edit your professional profile</a>
+         <a [routerLink]="['/hire/list']" class="btn btn-secondary btn-home">Pending messages</a>
+       
+     </div>
+     
+ </div>
+   -->
 

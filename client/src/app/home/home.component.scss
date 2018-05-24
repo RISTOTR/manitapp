@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css?family=Bad+Script|Homemade+Apple');
 
 
+#home {
+  min-height: 90vh;
+  min-width: 100%;
+  background: url('../../assets/images/plumbing-business.jpg');
+  background-size: cover;
+
+  
+}
+
+
 h1 {
   margin-top:170px;
   margin-bottom: 40px;
@@ -23,7 +33,33 @@ img {
 .btn-home {
   border:0px solid transparent;
   margin-left:15px;
-  background-color: rgb(216, 215, 215) !important;
+  background-color: rgb(130, 158, 214) !important;
+  padding: 25px;
+  font-size: 24px;
+}
+
+.btn-home:hover, .btn-home:focus, .btn-home:active{
+  background-color: rgb(252, 250, 250) !important;
+  color:rgb(130, 158, 214) !important;
+  font-size: 28px;
+}
+
+.btn-message {
+  border:0px solid transparent;
+  margin-left:15px;
+  background-color: rgb(252, 70, 70) !important;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-left: 40px;
+  font-size: 24px;
+}
+
+.btn-message:hover, .btn-message:focus, .btn-message:active{
+  background-color: rgb(252, 250, 250) !important;
+  color:rgb(252, 70, 70) !important;
+  font-size: 28px;
 }
 
 h2 {
@@ -33,5 +69,27 @@ h2 {
   color: gray;
 }
 
+.btn-prof {
+  margin-top: 20px;
+}
 
+.intro-text {
+  background-color: white; 
+  opacity: 0.9;
+  margin-top: 220px;
+  color: black;
+  
+}
 
+.intro-textcomplete {
+  margin-bottom: 80px;
+}
+
+.manitapp {
+  margin-top: 80px;
+}
+
+.links-home {
+  margin-top: 450px;
+  
+}

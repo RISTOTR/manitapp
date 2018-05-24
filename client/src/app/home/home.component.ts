@@ -9,7 +9,7 @@ import { UserService } from "../services/user.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  fullImagePath: string;
+  // fullImagePath: string;
   user:User;
   
   currentUser:User;
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   // zoom: number = 15;
 
   constructor(public sessionService: SessionService, public userService: UserService) {
-    this.fullImagePath = '../../assets/images/firstpage.jpg'
+    // this.fullImagePath = '../../assets/images/firstpage.jpg'
    }
 
   ngOnInit() {

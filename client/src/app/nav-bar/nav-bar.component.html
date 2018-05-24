@@ -8,7 +8,7 @@
 
 
   <div *ngIf="currentUser">
-    <!-- {{currentUser.username | uppercase}} -->
+     <span class="name">{{currentUser.username | uppercase}}</span>
     <a class="navbar-brand" [routerLink]="['/user/edit/']">
       <i class="fas fa-user"></i>Edit profile</a>
     <a class="navbar-brand" [routerLink]="['/offer/']">
