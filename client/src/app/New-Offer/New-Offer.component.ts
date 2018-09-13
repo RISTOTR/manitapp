@@ -42,7 +42,6 @@ export class NewOfferComponent implements OnInit {
   }
 
   newOffer(form) {
-    //console.log(form.value)
     form.value.id = this.user._id;
     this.offerService.newOffer(form.value).subscribe(data=>{
      

@@ -22,11 +22,6 @@ export class NavBarComponent implements OnInit {
     this.sessionService.userEvent.subscribe(u=> this.currentUser=u);
   }
 
-  // profile() {
-  //   this.userService.profileUser().subscribe(user => {
-  //     this.user = user;
-  //   });
-  // }
 
   logout() {
     this.sessionService.logout().subscribe(() => {
