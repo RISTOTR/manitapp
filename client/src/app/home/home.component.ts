@@ -13,10 +13,7 @@ export class HomeComponent implements OnInit {
   user:User;
   
   currentUser:User;
-  // title: string = 'Your ubication';
-  // lat: number = 40.433489;
-  // lng: number = -3.698555;
-  // zoom: number = 15;
+  
 
   constructor(public sessionService: SessionService, public userService: UserService) {
     // this.fullImagePath = '../../assets/images/firstpage.jpg'

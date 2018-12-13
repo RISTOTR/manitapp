@@ -6,7 +6,6 @@ import { HomeComponent } from "./home/home.component";
 import { OfferComponent } from "./offer/offer.component";
 import { HireComponent } from "./hire/hire.component";
 import { NewOfferComponent} from "./New-Offer/New-Offer.component";
-import { EditOfferComponent} from "./edit-offer/edit-offer.component";
 import { EditUserComponent } from "./edit-user/edit-user.component";
 import { OfferDetailComponent} from "./offer-detail/offer-detail.component";
 import { HireService } from "./services/hire.service";
@@ -23,13 +22,11 @@ export const routes: Routes = [
     {path: 'hire/new/:id', component: HireComponent},
     {path: 'offer/new', component: NewOfferComponent},
     {path: 'user/edit', component: EditUserComponent},
-    {path: 'offer/edit', component: EditOfferComponent},
     {path: 'offer/detail/:id', component: OfferDetailComponent},
     {path: 'hire/list', component: HireListComponent}
    
     
     
  
-//   { path: 'threads/new', component: NewThreadComponent},
-//   { path: 'threads/:id', component: SingleThreadComponent}
+
 ]

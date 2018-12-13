@@ -19,7 +19,6 @@ import { UserService } from './services/user.service';
 import { NewOfferComponent } from './New-Offer/New-Offer.component';
 import { OfferService } from './services/offer.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { EditOfferComponent } from './edit-offer/edit-offer.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { HireService } from './services/hire.service';
@@ -43,7 +42,6 @@ import { FilterPipe } from './pipes/filter.pipe';
     UserComponent,
     NewOfferComponent,
     NavBarComponent,
-    EditOfferComponent,
     EditUserComponent,
     OfferDetailComponent,
     HireListComponent,
